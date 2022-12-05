@@ -7,8 +7,19 @@
 
 mod user_input;
 
-fn main() {
+use std::fs::File;
+use std::io::{self, prelude::*, BufReader};
+
+fn main() -> io::Result<()> {
+    let password_filename: String = user_input::get_user_input("Enter filename:");
     let user_password: String = user_input::get_user_input("Enter password:");
 
-    println!("Password entered: {}", user_password);
+    let file = File::open(password_filename)?;
+    let reader = BufReader::new(file);
+
+    for line in reader.lines() {
+        println!("{}", line?);
+    }
+
+    Ok(())
 }
