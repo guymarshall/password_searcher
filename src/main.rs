@@ -14,8 +14,8 @@ fn main() -> io::Result<()> {
     let password_filename: String = user_input::get_user_input("Enter filename:");
     let user_password: String = user_input::get_user_input("Enter password:");
 
-    let file = File::open(password_filename)?;
-    let reader = BufReader::new(file);
+    let file: File = File::open(password_filename)?;
+    let reader: BufReader<File> = BufReader::new(file);
 
     for line in reader.lines() {
         println!("{}", line?);
