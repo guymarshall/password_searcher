@@ -17,7 +17,11 @@ fn main() -> io::Result<()> {
     let reader: BufReader<File> = BufReader::new(file);
 
     for line in reader.lines() {
-        println!("{}", line?);
+        let line: String = line.unwrap();
+        if line == user_password {
+            println!("Password file contains {}!", user_password);
+            break;
+        }
     }
 
     Ok(())
