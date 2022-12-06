@@ -14,7 +14,7 @@ use std::fs::File;
 use std::io::{self, prelude::*, BufReader};
 
 fn main() -> io::Result<()> {
-    let user_password: String = user_input::get_user_input("Enter password:").trim().to_string();
+    let user_password: String = user_input::get_user_input("Enter password:");
 
     let file: File = File::open("passwords.txt")?;
     let reader: BufReader<File> = BufReader::new(file);
