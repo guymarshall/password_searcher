@@ -7,5 +7,5 @@ pub fn get_user_input(prompt: &str) -> String {
 
     io::stdin().read_line(&mut user_input).expect("Failed to read line");
 
-    user_input
+    user_input.trim().to_string()
 }
