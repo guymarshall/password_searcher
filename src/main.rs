@@ -17,13 +17,13 @@ fn main() -> io::Result<()> {
     let user_password: String = user_input::get_user_input("Enter password:");
     let filename: String = user_input::get_user_input("Enter filename:");
 
-    let file: File = File::open(filename)?;
+    let file: File = File::open(&filename)?;
     let reader: BufReader<File> = BufReader::new(file);
 
     for line in reader.lines() {
         let line: String = line.unwrap();
         if line == user_password {
-            println!("Password file contains {}!", user_password);
+            println!("'{}' contains '{}'!", filename, user_password);
             break;
         }
     }
